@@ -1,1 +1,84 @@
-index.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Football Live</title>
+
+<link rel="stylesheet" href="style.css">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+</head>
+
+<body>
+
+<header>
+
+<div class="logo">
+⚽ Football Live
+</div>
+
+<div class="search-box">
+<input
+type="text"
+id="search"
+placeholder="Search Team...">
+<i class="fa fa-search"></i>
+</div>
+
+</header>
+
+<nav class="league-menu">
+
+<button class="active">All</button>
+<button>Premier League</button>
+<button>La Liga</button>
+<button>Champions League</button>
+<button>World Cup</button>
+
+</nav>
+
+<section id="matches">
+
+<div class="match-card">
+
+<div class="league">
+Premier League
+</div>
+
+<div class="teams">
+
+<div class="team">
+<img src="https://flagcdn.com/w80/gb.png">
+<h3>Manchester City</h3>
+</div>
+
+<div class="score">
+
+<h1>2 - 1</h1>
+
+<span class="live">
+78' LIVE
+</span>
+
+</div>
+
+<div class="team">
+<img src="https://flagcdn.com/w80/gb.png">
+<h3>Liverpool</h3>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<script src="script.js"></script>
+
+</body>
+</html>
