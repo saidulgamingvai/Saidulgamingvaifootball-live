@@ -1,1 +1,173 @@
-style.css
+/* Google Font */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:#0f172a;
+    color:#fff;
+}
+
+header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:20px;
+    background:#111827;
+    box-shadow:0 2px 10px rgba(0,0,0,.3);
+    position:sticky;
+    top:0;
+    z-index:100;
+}
+
+.logo{
+    font-size:28px;
+    font-weight:700;
+    color:#00e676;
+}
+
+.search-box{
+    position:relative;
+}
+
+.search-box input{
+    width:250px;
+    padding:12px 40px 12px 15px;
+    border:none;
+    border-radius:30px;
+    outline:none;
+    background:#1f2937;
+    color:#fff;
+}
+
+.search-box i{
+    position:absolute;
+    right:15px;
+    top:13px;
+    color:#aaa;
+}
+
+.league-menu{
+    display:flex;
+    overflow-x:auto;
+    gap:10px;
+    padding:15px;
+    background:#111827;
+}
+
+.league-menu button{
+    border:none;
+    background:#1f2937;
+    color:#fff;
+    padding:10px 20px;
+    border-radius:20px;
+    cursor:pointer;
+    transition:.3s;
+    white-space:nowrap;
+}
+
+.league-menu button:hover,
+.league-menu .active{
+    background:#00e676;
+    color:#000;
+}
+
+#matches{
+    max-width:1000px;
+    margin:25px auto;
+    padding:0 15px;
+}
+
+.match-card{
+    background:#1e293b;
+    border-radius:18px;
+    margin-bottom:20px;
+    padding:20px;
+    transition:.3s;
+    border:1px solid rgba(255,255,255,.08);
+}
+
+.match-card:hover{
+    transform:translateY(-4px);
+    box-shadow:0 8px 20px rgba(0,230,118,.25);
+}
+
+.league{
+    color:#00e676;
+    font-weight:600;
+    margin-bottom:15px;
+}
+
+.teams{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.team{
+    width:35%;
+    text-align:center;
+}
+
+.team img{
+    width:70px;
+    height:70px;
+    object-fit:contain;
+    margin-bottom:10px;
+}
+
+.team h3{
+    font-size:18px;
+}
+
+.score{
+    text-align:center;
+}
+
+.score h1{
+    font-size:42px;
+    margin-bottom:10px;
+}
+
+.live{
+    background:red;
+    padding:6px 15px;
+    border-radius:20px;
+    font-size:14px;
+    animation:blink 1s infinite;
+}
+
+@keyframes blink{
+    0%{opacity:1;}
+    50%{opacity:.4;}
+    100%{opacity:1;}
+}
+
+@media(max-width:768px){
+
+header{
+    flex-direction:column;
+    gap:15px;
+}
+
+.search-box input{
+    width:100%;
+}
+
+.teams{
+    flex-direction:column;
+    gap:20px;
+}
+
+.team{
+    width:100%;
+}
+
+.score h1{
+    font-size:34px;
+}
+
+}
