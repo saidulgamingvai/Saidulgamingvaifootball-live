@@ -1,74 +1,86 @@
-const API_KEY = "YOUR_API_KEY";
+const matches = [
 
-const matchesContainer = document.getElementById("matches");
-const searchInput = document.getElementById("search");
+{
+league:"FIFA Club World Cup",
+home:"Real Madrid",
+away:"Al Hilal",
+homeScore:3,
+awayScore:1,
+status:"FT"
+},
 
-let allMatches = [];
+{
+league:"Premier League",
+home:"Manchester City",
+away:"Liverpool",
+homeScore:2,
+awayScore:2,
+status:"78' LIVE"
+},
 
-// Live ম্যাচ লোড
-async function loadMatches() {
-    try {
-        const response = await fetch(
-            "https://v3.football.api-sports.io/fixtures?live=all",
-            {
-                headers: {
-                    "x-apisports-key": API_KEY
-                }
-            }
-        );
+{
+league:"La Liga",
+home:"Barcelona",
+away:"Real Madrid",
+homeScore:1,
+awayScore:0,
+status:"55' LIVE"
+},
 
-        const data = await response.json();
+{
+league:"Serie A",
+home:"Inter Milan",
+away:"Juventus",
+homeScore:0,
+awayScore:0,
+status:"33' LIVE"
+},
 
-        allMatches = data.response || [];
-
-        showMatches(allMatches);
-
-    } catch (error) {
-        matchesContainer.innerHTML =
-        "<h2>❌ Failed to load live matches.</h2>";
-        console.error(error);
-    }
+{
+league:"UEFA Champions League",
+home:"PSG",
+away:"Bayern Munich",
+homeScore:1,
+awayScore:2,
+status:"FT"
 }
 
-// ম্যাচ দেখানো
-function showMatches(matches){
+];
 
-    matchesContainer.innerHTML="";
+const container = document.getElementById("matches");
 
-    if(matches.length===0){
-        matchesContainer.innerHTML="<h2>No Live Match</h2>";
-        return;
-    }
+function loadMatches(list){
 
-    matches.forEach(match=>{
+container.innerHTML="";
 
-        matchesContainer.innerHTML += `
+list.forEach(match=>{
+
+container.innerHTML+=`
 
 <div class="match-card">
 
 <div class="league">
-🏆 ${match.league.name}
+🏆 ${match.league}
 </div>
 
 <div class="teams">
 
 <div class="team">
-<img src="${match.teams.home.logo}">
-<h3>${match.teams.home.name}</h3>
+<h3>${match.home}</h3>
 </div>
 
 <div class="score">
-<h1>${match.goals.home} - ${match.goals.away}</h1>
+
+<h1>${match.homeScore} - ${match.awayScore}</h1>
 
 <span class="live">
-${match.fixture.status.elapsed}' ${match.fixture.status.short}
+${match.status}
 </span>
 
 </div>
 
 <div class="team">
-<img src="${match.teams.away.logo}">
-<h3>${match.teams.away.name}</h3>
+<h3>${match.away}</h3>
 </div>
 
 </div>
@@ -77,28 +89,25 @@ ${match.fixture.status.elapsed}' ${match.fixture.status.short}
 
 `;
 
-    });
+});
 
 }
 
-// Team Search
-searchInput.addEventListener("keyup",()=>{
+loadMatches(matches);
 
-const value = searchInput.value.toLowerCase();
+// Search
+document.getElementById("search").addEventListener("keyup",e=>{
 
-const filtered = allMatches.filter(match=>
+const value=e.target.value.toLowerCase();
 
-match.teams.home.name.toLowerCase().includes(value) ||
+const result=matches.filter(match=>
 
-match.teams.away.name.toLowerCase().includes(value)
+match.home.toLowerCase().includes(value) ||
+
+match.away.toLowerCase().includes(value)
 
 );
 
-showMatches(filtered);
+loadMatches(result);
 
 });
-
-// Auto Refresh
-loadMatches();
-
-setInterval(loadMatches,30000);
