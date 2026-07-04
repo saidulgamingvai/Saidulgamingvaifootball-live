@@ -1,0 +1,7 @@
+football-live/
+│── index.html
+│── style.css
+│── script.js
+│── assets/
+│   ├── logo.png
+│   └── goal.mp3
